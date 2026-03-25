@@ -8,7 +8,7 @@
 #SBATCH --partition=ckpt
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=40
-#SBATCH --mem=100GB
+#SBATCH --mem=250GB
 #SBATCH --time=100:00:00 
 
 #SBATCH --chdir=/gscratch/tribblelab/shengkao/climbing_proj
@@ -22,6 +22,7 @@
 # -------------------------------
 SAMPLE=$1
 
+echo "${SAMPLE} merged"
 
 
 conda init

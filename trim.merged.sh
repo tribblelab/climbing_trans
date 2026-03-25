@@ -22,6 +22,8 @@
 # -------------------------------
 SAMPLE=$1
 
+echo "${SAMPLE}"
+
 conda init
 conda activate trim
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=BUSCO
+#SBATCH --job-name=orthofinder
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=shengkao@uw.edu
 
@@ -15,23 +15,16 @@
 #SBATCH --output=logs/%x_%j.out 
 
 
-# sbatch from conda environment
-
 # -------------------------------
 # set vars
 # -------------------------------
-SAMPLE=$1
+DIR=$1 # directory containing necessary fasta files
 
-echo "${SAMPLE}"
+echo "${DIR}"
 
 
 conda init
-conda activate busco
+conda activate orthofinder
 
-/gscratch/tribblelab/shengkao/tools/conda/envs/busco/bin/busco \
-    -i /gscratch/tribblelab/shengkao/climbing_proj/spades/${SAMPLE}/transcripts.fasta \
-    --mode transcriptome \
-    -l eukaryota_odb12 \
-    --cpu 20 \
-    --out_path /gscratch/tribblelab/shengkao/climbing_proj/busco \
-    -o ${SAMPLE}
+gscratch/tribblelab/shengkao/tools/conda/envs/orthofinder/bin/orthofinder \
+    -f ${DIR}

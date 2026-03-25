@@ -12,20 +12,10 @@
 #SBATCH --time=100:00:00 
 
 #SBATCH --chdir=/gscratch/tribblelab/shengkao/climbing_proj
-#SBATCH --output=logs/%x_%j.out 
+#SBATCH --output=rnaquast.samplewithref.test.out 
 
 
-# check quality of assembled transcriptome (one sample) by using the reference (transcriptome assembled using merged samples)
-
-# -------------------------------
-# set vars
-# -------------------------------
-SAMPLE=$1
-REF=$2
-
-
-echo "${SAMPLE}"
-echo "${REF} reference"
+# check quality of assembled transcriptome CMT342a (one sample) by using the reference (transcriptome assembled using merged samples)
 
 conda init
 conda activate rnaquast
@@ -40,9 +30,9 @@ export PATH="$PATH:/gscratch/tribblelab/shengkao/tools/GeneMarkST/"
 export PATH="$PATH:/gscratch/tribblelab/shengkao/tools/conda/envs/rnaquast/bin/"
 
 /gscratch/tribblelab/shengkao/tools/conda/envs/rnaquast/bin/python3 /gscratch/tribblelab/shengkao/tools/conda/envs/rnaquast/bin/rnaQUAST.py \
-    -1 /gscratch/tribblelab/shengkao/climbing_proj/trimmed/${SAMPLE}_output_forward_paired.fq.gz \
-    -2 /gscratch/tribblelab/shengkao/climbing_proj/trimmed/${SAMPLE}_output_reverse_paired.fq.gz \
-    --transcripts /gscratch/tribblelab/shengkao/climbing_proj/spades/${SAMPLE}/transcripts.fasta \
+    -1 /gscratch/tribblelab/shengkao/climbing_proj/trimmed/CMT342a_output_forward_paired.fq.gz \
+    -2 /gscratch/tribblelab/shengkao/climbing_proj/trimmed/CMT342a_output_reverse_paired.fq.gz \
+    --transcripts /gscratch/tribblelab/shengkao/climbing_proj/spades/CMT342a/transcripts.fasta \
     -t 20 \
-    --output_dir /gscratch/tribblelab/shengkao/climbing_proj/rnaquast/${SAMPLE}_withref \
-    --reference /gscratch/tribblelab/shengkao/climbing_proj/spades/${REF}_merged/transcripts.fasta
+    --output_dir /gscratch/tribblelab/shengkao/climbing_proj/rnaquast/CMT342a_withref \
+    --reference /gscratch/tribblelab/shengkao/climbing_proj/spades/CMT342_merged/transcripts.fasta
