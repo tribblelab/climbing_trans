@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=orthofinder.usetree
+#SBATCH --job-name=orthofinder.primary.transcript
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=shengkao@uw.edu
 
@@ -9,33 +9,26 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=24
-#SBATCH --mem=100GB
+#SBATCH --mem=10GB
 #SBATCH --time=100:00:00 
 
 #SBATCH --chdir=/gscratch/tribblelab/shengkao/climbing_proj
 #SBATCH --output=logs/%x_%j.out 
 
-
 # sbatch from conda environment
-
-# run orthofinder using our own input tree
 
 # -------------------------------
 # set vars
 # -------------------------------
 DIR=$1 # directory containing necessary fasta files
-TREE=$2 # path to tree file
 
 echo "${DIR}"
-echo "tree file: ${TREE}"
-
-# probably sbatch /gscratch/tribblelab/shengkao/climbing_proj/scripts/orthofinder.usetree.sh /gscratch/tribblelab/shengkao/climbing_proj/orthofinder/climbing_data /gscratch/tribblelab/shengkao/climbing_proj/orthofinder/tree.tre
 
 conda init
 conda activate orthofinder3
 
-/gscratch/tribblelab/shengkao/tools/conda/envs/orthofinder3/bin/orthofinder \
-    -d \
-    -t 40 \
-    -f ${DIR} \
-    -s ${TREE} 
+
+# keep only the longest isoform in each sample
+
+python /gscratch/tribblelab/shengkao/tools/conda/envs/orthofinder3/bin/primary_transcript.py \
+    ${DIR}

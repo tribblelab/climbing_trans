@@ -12,7 +12,7 @@
 #SBATCH --time=100:00:00 
 
 #SBATCH --chdir=/gscratch/tribblelab/shengkao/climbing_proj
-#SBATCH --output=logs/%x_%j.out 
+#SBATCH --output=logs/%x.%j.out 
 
 
 # sbatch from conda environment

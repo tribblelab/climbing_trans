@@ -34,4 +34,7 @@ do
 
         cp $dirname/transcripts.fasta /gscratch/tribblelab/shengkao/climbing_proj/orthofinder/climbing_data/$sample.fasta
     fi
+
+    # remove the non-merged files
+    ls /gscratch/tribblelab/shengkao/climbing_proj/orthofinder/climbing_data/ | grep -v "merged" | xargs rm
 done
