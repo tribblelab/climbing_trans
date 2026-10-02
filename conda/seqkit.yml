@@ -1,0 +1,7 @@
+name: seqkit
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - seqkit=2.14.0=hb192632_0
+prefix: /gscratch/tribblelab/shengkao/tools/conda/envs/seqkit
