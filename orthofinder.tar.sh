@@ -26,10 +26,17 @@ echo "${DIR}"
 
 NAME=$(basename ${DIR})
 
-echo "compressed file:"
-echo "${DIR}/${NAME}.Orthogroup_Sequences.tar.gz"
-
 tar -cvzf \
     ${DIR}/${NAME}.Orthogroup_Sequences.tar.gz \
     --remove-files \
     ${DIR}/Orthogroup_Sequences
+
+tar -cvzf \
+    ${DIR}/WorkingDirectory/Sequences_ids.tar.gz \
+    --remove-files \
+    ${DIR}/WorkingDirectory/Sequences_ids
+
+
+echo "compressed files:"
+echo "${DIR}/${NAME}.Orthogroup_Sequences.tar.gz"
+echo "${DIR}/WorkingDirectory/Sequences_ids.tar.gz"
