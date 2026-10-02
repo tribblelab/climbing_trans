@@ -1,6 +1,6 @@
 # Workflow for Bomarea transcriptome assembly 
 
-[see full documentation] (https://docs.google.com/document/d/1Zs_wZpwXcdWQEqOFpey47USY3LiBcJ7eYPk4rK7a9_s/edit?usp=sharing)
+[see full documentation](https://docs.google.com/document/d/1Zs_wZpwXcdWQEqOFpey47USY3LiBcJ7eYPk4rK7a9_s/edit?usp=sharing)
 
 ## conda
 
