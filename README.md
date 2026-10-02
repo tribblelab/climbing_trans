@@ -25,6 +25,8 @@ sbatch kraken2.sh
 
 ### QC steps
 
+## Gene Prediction using TD2
+
 ## Orthofinder
 
 
